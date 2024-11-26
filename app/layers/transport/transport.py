@@ -2,7 +2,6 @@
 
 import requests
 from ...config import config
-from ..utilities import translator
 
 # comunicación con la REST API.
 # este método se encarga de "pegarle" a la API y traer una lista de objetos JSON crudos (raw)
@@ -22,8 +21,7 @@ def getAllImages(input=None):
         try:
             # verificar si la clave 'image' está presente en el objeto (sin 'image' NO nos sirve, ya que no mostrará las imágenes).
             if 'image' in object:
-                card = translator.fromRequestIntoCard(object)  
-                json_collection.append(card)
+                json_collection.append(object)
             else:
                 print("[transport.py]: se encontró un objeto sin clave 'image', omitiendo...")
 
